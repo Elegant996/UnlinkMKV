@@ -1,16 +1,12 @@
-=head1 NAME
-
-unlinkmkv - automate the tedious process of unlinking segmented MKV files.
-
-=head2 WHAT?
+# UnlinkMKV
 
 A segmented MKV is an MKV that utilizes external additional MKV files to create a "whole" MKV. A common example is that when an anime series uses the same introduction and ending in every episode, sometimes the encoder will break the introduction and ending into their own MKV files, and then "link" to the segments as chapters in each episode's individual MKV. The problem is that very few players/filters/splitters support this, so this script automates the mkvtoolnix tools to "Rebuild" each episode into "complete" MKVs.
 
-=head2 VERSION
+## VERSION
 
 version 1.01
 
-=head2 SYNOPSIS
+## SYNOPSIS
 
 Using UnlinkMKV to unlink segments, the chapters when viewing the video ARE retained. The MKV spec requires that the segmented files are in the same directory, so does this. It doesn't matter if you rename the files as long as all required files are in the same directory as the one being processed, segmenting is based on internal IDs. Depending on how the original files were made, you may need to use the fix-audio and fix-video options.
 
@@ -45,11 +41,11 @@ You could process them all at once with:
 
    unlinkmkv --fix-audio --fix-video --outdir "L:\Fate-Zero" "D:\Videos"
 
-=head2 INSTALLATION
+## INSTALLATION
 
 This script was altered from its original counterpart to support Windows. It will not work on Linux based systems. The script is designed to use your current working directory if you specify no output directory and to use your first "TMP" folder listed in your environment variables for extraction.
 
-=head2 DEPENDENCIES
+## DEPENDENCIES
 
 This script requires:
 
@@ -63,7 +59,7 @@ This script requires:
    FFmpeg and MKVToolnix must be added to the Environment Variables Path in order for script or executable to function.
    
 
-=head2 USAGE
+## USAGE
 
    unlinkmkv {options} {file|path}
 
@@ -81,16 +77,16 @@ This script requires:
    --(no-)chapters        The script does its best to adjust the chapters, but it's not quite perfect. This disables including chapters in the final file.
 
 
-=head2 SUPPORT
+## SUPPORT
 
 Feel free to contact me via Github.
 
-=head2 SPECIAL THANKS
+## SPECIAL THANKS
 
 I'd like to thank the original author, Garret Noling, for creating this script in the first place for use on Linux based systems.
 
 
-=head2 COPYRIGHT AND LICENSE
+## COPYRIGHT AND LICENSE
 
 Copyright (C) 2014 Shane Panke
 
