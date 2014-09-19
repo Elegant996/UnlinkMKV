@@ -12,34 +12,44 @@ Using UnlinkMKV to unlink segments, the chapters when viewing the video ARE reta
 
 Say we have the files:
 
+   ```
    Fate-Zero - 01.mkv
    Fate-Zero - OP1.mkv
    Fate-Zero - ED1.mkv
+   ```
 
 And "Fate-Zero - 01.mkv" links the opening and ending files in the "appropriate places."
 
+   ```
    unlinkmkv --outdir "L:\Fate-Zero" Fate-Zero - 01.mkv
+   ```
 
 Doing so will generate a new file with the opening and ending built-in instead of externally linked like before, renaming the original file and replacing the old one with the new one. Obviously the new file will be the size of the original + opening + ending (bigger).
 
 Now, we test the file in a video player. It's important to check for audio or video problems, especially when transitioning between where the segments would have come in. Often times this is the opening/ending and the main show, so seek inside both places and make sure sound is playing in both places, and the video looks fine. Let's
 pretend our sound is totally missing in the main video, and the video is corrupt!
 
+   ```
    unlinkmkv --fix-audio --fix-video --outdir "L:\Fate-Zero" Fate-Zero - 01.mkv
+   ```
 
 What happens is sometimes encoders use codecs that don't play well with matroska, and can't be assembled as they were -- either the codec (OGG) or the settings (thanks, encoder guy) being the cause. The fix-audio and fix-video option simply re-encodes the audio and video into a uniform format that plays nice, with settings that try to not reduce the quality very much (not noticable), nor make the files hugemassive. See the FFMPEG notes!
 
 You can also use an absolute or relative path instead, so, assume you're in a directory containing the entire seeson of an anime including the segmented file parts:
 
+   ```
    Fate-Zero - 01.mkv
    Fate-Zero - 02.mkv
    Fate-Zero - 03.mkv
    Fate-Zero - OP1.mkv
    Fate-Zero - ED1.mkv
+   ```
 
 You could process them all at once with:
 
+   ```
    unlinkmkv --fix-audio --fix-video --outdir "L:\Fate-Zero" "D:\Videos"
+   ```
 
 ## INSTALLATION
 
@@ -49,18 +59,21 @@ This script was altered from its original counterpart to support Windows. It wil
 
 This script requires:
 
+   ```
    Perl        				5.8.9 through 5.18.2.2 (anything beyond is NOT supported)
    FFmpeg					Latest
    MKVToolnix  				6.0.0 or later
    String::CRC32			1.5 or later
    Win32::Console::ANSI		1.08 or later
    Win32:Socketpair			0.02 or later
+   ```
    
    FFmpeg and MKVToolnix must be added to the Environment Variables Path in order for script or executable to function.
    
 
 ## USAGE
 
+   ```
    unlinkmkv {options} {file|path}
 
    Options:
@@ -75,7 +88,8 @@ This script requires:
    --playresy             Same as above, but for the Y axis (vertical).
    --ignore-default-flag  Occassionally the default chapter flag exists, but *all* chapters are disabled which confuses the script. Enable on those rare occassions.
    --(no-)chapters        The script does its best to adjust the chapters, but it's not quite perfect. This disables including chapters in the final file.
-
+   ```
+   
 
 ## SUPPORT
 
